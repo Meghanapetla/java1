@@ -15,7 +15,8 @@ public class prog5
       l = ar[0];
       for(i=1; i<5; i++)
       {
-         if(l<ar[i])
+    
+    	  if(l<ar[i])
             l = ar[i];
       }
       
