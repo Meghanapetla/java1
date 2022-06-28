@@ -1,0 +1,652 @@
+1.What is this keyword and try to explore what are usage of this keyword.
+The this keyword refers to the current object in a method or constructor. The most common use of the this keyword is to eliminate the confusion between class attributes and parameters with the same name (because a class attribute is shadowed by a method or constructor parameter). 
+
+Example:
+
+package test;
+class Calc
+{
+	int num1;
+	int num2;
+	int resut;
+	public Calc(int num1,int num2)
+	{
+		this.num1=num1;
+		this.num2=num2;
+	}
+}
+public class objectdemo
+{
+	public static void main(String[]args)
+	{
+		Calc obj=new Calc(4,5);
+		System.out.println(obj.num1);
+		System.out.println(obj.num2);
+	}
+}
+Output:
+4
+5
+
+2.What is the difference between equals() method and == operator?
+
+Both equals () method and the == operator are used to compare two objects in Java. == is an operator and equals () is method. But == operator compares reference or memory location of objects in the heap, whether they point to the same location or not.
+
+3. what is aggregation in java ?
+ Aggregation in Java is a relationship between two classes that is best described as a "has-a" and "whole/part" relationship. It is a more specialized version of the association relationship. The        aggregate class contains a reference to another class and is said to have ownership of that class.
+
+Example:
+
+package test;
+import java.util.Scanner;
+public class aggregation{  
+int id;  
+String name;  
+Address address;  
+  
+public aggregation(int id, String name,Address address) {  
+    this.id = id;  
+    this.name = name;  
+    this.address=address;  
+}  
+  
+void display(){  
+System.out.println(id+" "+name);  
+System.out.println(address.city+" "+address.state+" "+address.country);  
+}  
+  
+public static void main(String[] args) {  
+Address address1=new Address("gzb","UP","india");  
+Address address2=new Address("gno","UP","india");  
+  
+Emp e=new Emp(111,"varun",address1);  
+Emp e2=new Emp(112,"arun",address2);  
+      
+e.display();  
+e2.display();  
+      
+}  
+}  
+Output: varun
+       gzb UP india
+       112 arun
+       gno UP india
+
+4. what is polymorphism?
+Polymorphism in Java is a concept by which we can perform a single action in different ways.
+There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism. We can perform polymorphism in java by method overloading and method overriding.
+
+5.what is method overloading?
+If a class has multiple methods having same name but different in parameters, it is known as Method Overloading.
+Advantage of method overloading
+Method overloading increases the readability of the program.
+Different ways to overload the method
+There are two ways to overload the method in java
+By changing number of arguments
+
+Example:
+package test;
+
+public class MO_changing_args 
+{
+
+	public static void main(String[] args) 
+	{
+    class Adder
+    
+    {  
+    static int add(int a,int b){return a+b;}  
+    static int add(int a,int b,int c){return a+b+c;}  
+}  
+class TestOverloading1
+{  
+public static void main(String[] args)
+{  
+System.out.println(Adder.add(11,11));  
+System.out.println(Adder.add(11,11,11));  
+}
+}
+}
+}
+Output:
+22
+33
+
+2.By changing the data type
+package test;
+
+public class MO_changingdatatypes {
+
+	public static void main(String[] args) 
+	{
+class Adder{  
+static int add(int a, int b){return a+b;}  
+static double add(double a, double b){return a+b;}  
+}  
+class TestOverloading2{  
+public static void main(String[] args){  
+System.out.println(Adder.add(11,11));  
+System.out.println(Adder.add(12.3,12.6));  
+}} 
+}
+Output:
+22
+24.9
+
+6.What is Method overriding?
+If subclass (child class) has the same method as declared in the parent class, it is known as method overriding in Java.
+It is the ability to define a behaviour that's specific to the subclass type, which means a subclass can implement a parent class method based on its requirement.
+In object-oriented terms, overriding means to override the functionality of an existing method.
+
+Example:
+package test;
+public class Method_overriding {
+	public static void main(String[]args)
+	{
+	class Vehicle{  
+		  //defining a method  
+		  void run(){System.out.println("Vehicle is running");}  
+		}  
+		//Creating a child class  
+		class Bike2 extends Vehicle{  
+		  //defining the same method as in the parent class  
+		  void run(){System.out.println("Bike is running safely");}  
+		  
+		  public static void main(String args[]){  
+		  Bike2 obj = new Bike2();//creating object  
+		  obj.run();//calling method  
+		  }  
+		}  
+}
+}
+Output:
+Bike is running safely
+
+7. what is the difference between method overloading and method overriding?
+Method overloading:
+Method overloading is used to increase the readability of the program.
+Method overloading is performed within class.
+In case of method overloading, parameter must be different.
+In java, method overloading can't be performed by changing return type of the method only. Return type can be same or different in method overloading. But you must have to change the parameter.
+
+Method overriding:
+Method overriding is used to provide the specific implementation of the method that is already provided by its super class.
+Method overriding occurs in two classes that have IS-A (inheritance) relationship
+In case of method overriding, parameter must be same.
+Return type must be same or covariant in method overriding.
+
+8.Difference between encapsulation and data abstraction?
+Abstraction:
+Abstraction is the process or method of gaining the information.
+In this, problems are solved at the design or interface level.
+Itis the method of hiding the unwanted information.
+We can implement abstraction using abstract class and interfaces.
+In abstraction, implementation complexities are hidden using abstract classes and interfaces.
+The objects that help to perform abstraction are encapsulated.
+Abstraction provides access to specific part of data.
+
+Encapsulation:
+While encapsulation is the process or method to contain the information.
+While in encapsulation, problems are solved at the implementation level.
+Whereas encapsulation is a method to hide the data in a single entity or unit along with a method to protect information from outside.
+Whereas encapsulation can be implemented using by access modifier i.e. private, protected and public.
+While in encapsulation, the data is hidden using methods of getters and setters.
+Whereas the objects that result in encapsulation need not be abstracted.
+Encapsulation hides data and the user can not access same directly (data hiding.
+Encapsulation focus is on “How” it should be done.
+
+
+9.What is the difference between abstract class and interface?
+Abstract class:
+Abstract class can have abstract and non-abstract methods.
+Abstract class doesn't support multiple inheritance.
+Abstract class can have final, non-final, static and non-static variables.
+Abstract class can provide the implementation of interface.
+The abstract keyword is used to declare abstract class.
+An abstract class can extend another Java class and implement multiple Java interfaces.
+An abstract class can be extended using keyword "extends".
+A Java abstract class can have class members like private, protected, etc.
+Example:
+public abstract class Shape{
+public abstract void draw();
+}
+
+Interface:
+Interface can have only abstract methods. Since Java 8, it can have default and static methods also.
+Interface supports multiple inheritance.
+Interface has only static and final variables.
+Interface can't provide the implementation of abstract class.
+The interface keyword is used to declare interface.
+An interface can extend another Java interface only.
+An interface can be implemented using keyword "implements".
+Members of a Java interface are public by default.
+
+Example:
+public interface Drawable{
+void draw();
+}
+
+10.Java Program to print Odd and Even Numbers from an Array 
+Example : int a[]={1,2,5,6,3,2};  
+O/p : odd numbers 1 5 3
+          Even 2 6 2
+
+package javaprogram;
+public class one {
+	
+	public static void main(String[] args) {
+		
+		
+		int a[]= {1,2,5,6,3,2};
+		int even=a[0];
+		int odd=a[0];
+		for(int i=0;i<a.length;i++) {
+			if(a[i]%2==0) {
+				System.out.println("even numbers: "+a[i]);
+			}
+		}
+		for(int i=0;i<a.length;i++) {
+			if(a[i]%2!=0) {
+				System.out.println("odd numbers: "+a[i]);
+			}
+		}
+
+}
+}
+
+OUTPUT:
+even numbers: 2
+even numbers: 6
+even numbers: 2
+odd numbers: 1
+odd numbers: 5
+odd numbers: 3
+
+11.Write a Java program to find the sum of array elements in Java.
+Ex: array[] = {10, 20, 30}
+Sum of array elements = 10+20+30 = 60
+
+package javaprograms;
+public class two {
+	public static void main(String[] args) {
+		int a[]= {10,20,30};
+		int sum=0;
+		for(int i=0;i<a.length;i++) {
+		sum=a[i]+sum;
+		}
+		System.out.println("sum of given numbers: "+sum);
+	}
+
+}
+
+OUTPUT:
+sum of given numbers: 60
+
+12.Write a Java program to calculate the average of numbers or find the average of elements of the given array.
+Ex: array[] = {10, 20, 30, 40, 50};
+then sum of array elements = 10 + 20 + 30 + 40 + 50 = 150
+and the average of numbers = 150 / 5 = 30
+
+package javaprograms;
+public class three {
+
+	public static void main(String[] args) {
+	int a[]= {10,20,30,40,50};
+	int sum=0;
+	for(int i=0;i<a.length;i++) {
+		sum=a[i]+sum;
+		}
+	System.out.println("sum of given numbers:"+sum);
+	int avg=0;
+	for(int i=0;i<a.length;i++) {
+		avg=sum/5;
+	}
+	System.out.println("average of given numbers:"+avg);
+	}
+
+}
+OUTPUT:
+sum of given numbers:150
+average of given numbers:30
+
+13.Write a Java program to find the sum of two arrays elements.
+Ex:array1[] = {10, 20, 30, 40, 50};
+array2[] = {9, 18, 27, 36, 45};
+The resultant array will be,
+array3[] = {19, 38, 57, 76, 95};
+
+package javaprograms;
+public class four {
+
+	public static void main(String[] args) {
+		int a[]= {10,20,30,40,50};
+		int b[]= {9,18,27,36,45};
+		int sum=0;
+		for(int i=0;i<b.length;i++) {
+			sum=a[i]+b[i];
+			System.out.println("array 3[]: "+sum);
+		}
+
+	}
+
+}
+
+OUTPUT:
+array 3[]19
+array 3[]38
+array 3[]57
+array 3[]76
+array 3[]95
+
+14.Write a Java program to find the largest number in the array.
+Ex. Array: {10, 5, -15, 20, -30}
+Largest element = 20
+package javaprograms;
+
+public class five {
+	public static void main(String[] args) {
+		int a[]= {10,5,-15,20,-30};
+		int large=a[0];
+		for(int i=0;i<a.length;i++) {
+			if(a[i]>large) {
+				System.out.println("Largest element :"+a[i]);
+				
+			}
+		}
+		
+
+	}
+
+}
+
+OUTPUT:
+Largest element :20
+
+15.Write a Java program to count the even and odd numbers in the given
+Ex:-
+Array = {11, 12, 13, 14, 15}
+Count of the even number = 2
+Count of the odd number = 3
+
+package javaprograms;
+public class six {
+
+	public static void main(String[] args) {
+		int a[]= {11,12,13,14,15};
+		int evencount=0;
+		int oddcount=0;
+		for(int i=0;i<a.length;i++) {
+			if(a[i]%2==0) {
+				evencount++;
+				
+			}
+		if(a[i]%2!=0) {
+			oddcount++;
+				
+		}
+		}
+		System.out.println("count of even numbers is: "+evencount);
+
+		System.out.println("count of even numbers is: "+oddcount);
+
+	}
+
+}
+
+OUTPUT:
+count of even numbers is: 2
+count of even numbers is: 3
+
+16. Write a Java Program to sort the elements of an array in ascending order.
+
+package test;
+import java.util.Scanner;
+public class ascendingorder 
+{
+    public static void main(String[] args) 
+    {
+    	int count, temp;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements in array: ");
+        count = sc.nextInt();
+        int num[] = new int[count];
+        System.out.println("Enter array elements:");
+        for (int i = 0; i < count; i++) 
+        {
+            num[i] = sc.nextInt();
+        }
+        sc.close();
+        for (int i = 0; i < count; i++) 
+        {
+            for (int j = i + 1; j < count; j++) { 
+                if (num[i] > num[j]) 
+                {
+                    temp = num[i];
+                    num[i] = num[j];
+                    num[j] = temp;
+                }
+            }
+        }
+        System.out.print("Array Elements in Ascending Order: ");
+        for (int i = 0; i < count - 1; i++) 
+        {
+            System.out.print(num[i] + ", ");
+        }
+        System.out.print(num[count - 1]);
+    }
+}
+
+Output:
+Enter number of elements in array: 5
+Enter array elements:
+11
+21
+45
+4
+5
+Array Elements in Ascending Order: 4, 5, 11, 21, 45
+
+17. Write a Java program to get specified index position elements.
+
+package test;
+public class threemultiple_indexvalues {
+
+	public static void main(String[] args) 
+	{
+		int arr1[]= {1,2,3,4,6,7,8,9};
+		
+		for(int i=1;i<arr1.length;i++) {
+				if(i%3==0) {
+				System.out.print(arr1[i]+" ");
+				}
+			}
+
+	}
+
+}
+Output:
+4 8
+
+18. write a program  to reverse String in java.
+
+package test;
+import java.util.Scanner;
+public class revstring 
+{
+	public static void main(String[] args)
+	{
+		String str;
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter a string : ");
+		str=sc.nextLine();	
+		System.out.println("Reverse of a String '"+str+"' is  :"); 
+		int size=str.length();
+        for(int i=size-1;i>=0;i--)
+        {
+        	System.out.print(str.charAt(i));
+        	
+        }
+}
+}
+Output:
+Enter a string : hi all
+Reverse of a String 'hi all' is  :
+lla ih
+
+
+19. write a program to check given String is Palindrome or not in java.
+
+package test;
+import java.util.Scanner;   
+class palindrom  
+{  
+   public static void main(String args[])  
+   {  
+      String original, reverse = ""; // Objects of String class  
+      Scanner in = new Scanner(System.in);   
+      System.out.println("Enter a string/number to check if it is a palindrome");  
+      original = in.nextLine();   
+      int length = original.length();   
+      for ( int i = length - 1; i >= 0; i-- )  
+         reverse = reverse + original.charAt(i);  
+      if (original.equals(reverse))  
+         System.out.println("Entered string/number is a palindrome.");  
+      else  
+         System.out.println("Entered string/number isn't a palindrome.");   
+   }  
+}  
+Output:
+Enter a string/number to check if it is a palindrome
+14546
+Entered string/number isn't a palindrome.
+
+20. Write a java program to reverse each word in string.
+
+package test;
+import java.util.Scanner;
+public class rev_each_word_in_string
+{
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Original string : ");
+    String os= scanner.nextLine();
+    scanner.close();
+ 
+    String words[] =os.split("\\s");
+    String reversedString = "";
+ 
+    for (int i = 0; i < words.length; i++) 
+    {
+      String word = words[i];
+      String reverseWord = "";
+      for (int j = word.length() - 1; j >= 0; j--) 
+      {
+        reverseWord = reverseWord + word.charAt(j);
+      }
+      reversedString = reversedString + reverseWord + " ";
+    }
+    System.out.print(reversedString);
+  }
+}
+ 
+
+
+Output:
+Original string : java application
+avaj noitacilppa
+
+
+21. write a program given strings both same or not.
+
+package test;
+import java.util.Scanner;
+public class stringequal_or_not{
+    public static void main(String args[]) {
+        String str1, str2;
+        Scanner scanner = new Scanner(System.in);
+ 
+        System.out.println("Enter first String");
+        str1 = scanner.nextLine();
+ 
+        System.out.println("Enter second String");
+        str2 = scanner.nextLine();
+        // Comparing two input string
+        if (str1.equals(str2))
+            System.out.print("Equal Strings");
+        else
+            System.out.print("UnEqual Strings");
+    }
+}
+Output:
+Enter first String
+apple
+Enter second String
+appke
+UnEqual Strings
+
+
+
+
+
+22. Write a Java program to find second largest element in an array of integers.
+package test;
+
+public class secondlargest {
+
+	public static void main(String[] args) 
+	{
+		int largest=0;
+		int secondlargest=0;
+		int []arr= {64,45,87,62,94};
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i]>largest)
+			{
+				secondlargest=largest;
+				largest=arr[i];
+			}
+			else if(arr[i]>secondlargest)
+			{
+				secondlargest=arr[i];
+				}
+			}
+		System.out.println(secondlargest);
+
+	}
+
+}
+Output:
+87
+
+23. Write a Java program to separate zeros from non-zeros in an integer array.
+
+package test;
+import java.util.Arrays;
+public class separatezeros {
+
+	public static void main(String[] args) {
+
+		int array[]= {1,0,3,0,5,6};
+		int count=0;
+		Arrays.sort(array);
+		for(int i=0;i<array.length;i++) {
+			if(array[i]!=0) {
+				array[count++]=array[i];
+			}
+		}
+		while(count<array.length) {
+			array[count++]=0;
+		}
+		for(int j=0; j<array.length; j++) {
+			System.out.print(array[j]);
+		}
+		
+		}
+		
+		
+	}
+Output:
+135600
+
+
+
